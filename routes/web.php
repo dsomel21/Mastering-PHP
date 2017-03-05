@@ -20,13 +20,4 @@ Route::get('/', function () {
     // or ->withPeople($people)
 });
 
-Route::get('/satnam', function(){
-	return 'Satnam';
-	// resources/views/about.blade.php
-	// OR
-	// resources/views/pages/about.blade.php
-});
-
-Route::get('/about', function(){
-	return view('pages.about');
-});
+Route::get('/artists', 'ArtistsController@index');
