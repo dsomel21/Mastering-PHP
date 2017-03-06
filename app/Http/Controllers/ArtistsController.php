@@ -12,8 +12,8 @@ class ArtistsController extends Controller {
 			return view('artists.index', compact('artists'));
 	}
 
-	public function show(Artist $id){
+	public function show(Artist $artist){
 		// $artist = Artist::find($id);
-		return view('artists.show', compact('id'));
+		return view('artists.show', compact('artist'));
 	}
 }
