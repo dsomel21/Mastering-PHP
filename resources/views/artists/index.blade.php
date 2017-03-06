@@ -9,7 +9,9 @@
 
 	@foreach ($artists as $artist)
 		<div>
-			{{ $artist->name }}
+			<li><a href="/artists/{{$artist->id}}">{{ $artist->name }}</a></li>
+
+			<li>{{ $artist->path() }}</li>
 		</div>
 	@endforeach
 
