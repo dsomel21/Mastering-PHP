@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('title')
+	Artists
+@stop
+
 @section('content')
 	<h1>All Artists!</h1>
 

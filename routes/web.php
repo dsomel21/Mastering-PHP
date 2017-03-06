@@ -21,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/artists', 'ArtistsController@index');
+
+Route::get('artists/{id}', 'ArtistsController@show');
