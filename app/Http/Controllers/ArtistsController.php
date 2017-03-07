@@ -16,4 +16,15 @@ class ArtistsController extends Controller {
 		// $artist = Artist::find($id);
 		return view('artists.show', compact('artist'));
 	}
+
+	public function store(Request $request, Artist $artist){
+	
+		
+	
+  	$artist->create([
+  		'name' => $request->name
+		]);
+
+		return back();
+	}
 }

@@ -10,4 +10,8 @@ class Artist extends Model {
 		return $this->hasMany(Album::class);
 	}
 
+	public function addAlbum(Album $album){
+		return $this->albums()->save($album);
+	}
+
 }

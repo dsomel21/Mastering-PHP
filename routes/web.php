@@ -25,3 +25,9 @@ Route::get('/artists', 'ArtistsController@index');
 Route::get('/artists/{artist}', 'ArtistsController@show');
 
 Route::post('/artists/{artist}/albums', 'AlbumsController@store');
+
+Route::get('/albums/{album}/edit', 'AlbumsController@edit');
+
+Route::put('/albums/{album}', 'AlbumsController@update');
+
+Route::post('/artists', 'ArtistsController@store');
