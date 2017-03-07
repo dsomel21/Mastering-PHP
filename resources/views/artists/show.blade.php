@@ -20,7 +20,10 @@
 			<h1>Comments</h1>
 			<ul class="list-group">
 				@foreach ($artist->comments as $comment)
-					<li class="list-group-item">{{$comment->body}}</li>
+					<li class="list-group-item">
+						{{$comment->body}}
+						<a href="#" style="float: right;">{{ $comment->user_id }}</a>
+					</li>
 				@endforeach
 			</ul>
 			
