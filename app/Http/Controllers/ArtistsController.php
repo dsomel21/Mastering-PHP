@@ -18,9 +18,7 @@ class ArtistsController extends Controller {
 	}
 
 	public function store(Request $request, Artist $artist){
-	
 		
-	
   	$artist->create([
   		'name' => $request->name
 		]);
