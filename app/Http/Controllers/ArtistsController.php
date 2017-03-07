@@ -32,10 +32,10 @@ class ArtistsController extends Controller {
 		/* Solution... */
 		// $artist = Artist::with('comments.user')->get()->find(1);
 
-		/* Same thing as above.*/
+		/* Same thing as above. */
 		$artist->load('comments.user');
 
-		return $artist;
+		// return $artist;
 
 
 		return view('artists.show', compact('artist'));

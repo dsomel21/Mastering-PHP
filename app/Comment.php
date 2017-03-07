@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
-{
+class Comment extends Model {
+
+		protected $fillable = ['body', 'user_id'];
+
     public function artist(){
     	return $this->belongsTo(Artist::class);
     }

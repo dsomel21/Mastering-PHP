@@ -10,6 +10,8 @@ class AlbumsController extends Controller {
 
   public function store(Request $request, Artist $artist){
 
+    return $artist;
+
     /* One Way...*/
   	// $album = new Album;
   	// $album->album_name = $request->album_name;

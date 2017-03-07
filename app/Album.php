@@ -13,6 +13,10 @@ class Album extends Model
     	return $this->belongsTo(Artist::class);
     }
 
+    public function comments(){
+    	return $this->hasMany(Comment::class);
+    }
+
     public function path(){
     	return '/albums/' . $this->id;
     }

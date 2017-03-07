@@ -22,10 +22,24 @@
 				@foreach ($artist->comments as $comment)
 					<li class="list-group-item">
 						{{$comment->body}}
-						<a href="#" style="float: right;">{{ $comment->user_id }}</a>
+						<a href="#" class="pull-right">{{ $comment->user->username }}</a>
 					</li>
 				@endforeach
 			</ul>
+
+			<h3>Add a New Comment</h3>
+
+			<form method="POST" action="/artists/{{ $artist->id }}/comments">
+				<div class="form-group">
+					<input type="hidden" name="user_id" value="1">
+					<textarea name="body" class="form-control"></textarea>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Add Comment!</button>
+				</div>
+			</form>
 			
 			<hr>
 			<h3>Add a New Album</h3>

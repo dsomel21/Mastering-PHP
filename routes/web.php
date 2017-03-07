@@ -31,3 +31,5 @@ Route::get('/albums/{album}/edit', 'AlbumsController@edit');
 Route::put('/albums/{album}', 'AlbumsController@update');
 
 Route::post('/artists', 'ArtistsController@store');
+
+Route::post('/artists/{artist}/comments', 'CommentController@store');
