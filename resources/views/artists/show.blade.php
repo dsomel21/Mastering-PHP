@@ -31,8 +31,7 @@
 
 			<form method="POST" action="/artists/{{ $artist->id }}/comments">
 				<div class="form-group">
-					<input type="hidden" name="user_id" value="1">
-					<textarea name="body" class="form-control"></textarea>
+					<textarea name="body" class="form-control">{{old('body')}}</textarea>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				</div>
 
@@ -40,6 +39,13 @@
 					<button type="submit" class="btn btn-primary">Add Comment!</button>
 				</div>
 			</form>
+			{{-- {{ var_dump($errors) }} --}}
+
+			@if (count($errors))
+				@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
+				@endforeach
+			@endif
 			
 			<hr>
 			<h3>Add a New Album</h3>

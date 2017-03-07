@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model {
 
-		protected $fillable = ['body', 'user_id'];
+		protected $fillable = ['body'];
 
     public function artist(){
     	return $this->belongsTo(Artist::class);
@@ -15,4 +15,8 @@ class Comment extends Model {
     public function user(){
     	return $this->belongsTo(User::class);
     }
+
+    // public function by(User $user){
+    // 	$this->user_id = $user->id;
+    // }
 }

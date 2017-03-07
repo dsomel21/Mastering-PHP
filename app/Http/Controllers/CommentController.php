@@ -9,11 +9,20 @@ use App\Artist;
 class CommentController extends Controller {
 
 	public function store(Request $request, Artist $artist){
-		
-		$artist->comments()->create([
-			'body'=>$request->body,
-			'user_id'=>$request->user_id
+
+		$this->validate($request, [
+			'body' => 'required|min:10'
 		]);
+
+		$comment = new Comment;
+		$comment->body = $request->body;
+		$comment->user_id = 1;
+
+		$artist->comments()->save($comment);
+
+		// $artist->comments()->create([
+		// 	'body'=>$request->body
+		// ]);
 
 		return back();
 	}
