@@ -14,4 +14,8 @@ class Artist extends Model {
 		return $this->albums()->save($album);
 	}
 
+	public function comments(){
+		return $this->hasMany(Comment::class);
+	}
+
 }

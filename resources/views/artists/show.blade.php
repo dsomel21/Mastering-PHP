@@ -15,6 +15,14 @@
 				<li class="list-group-item">{{ $album->album_name }}</li>
 				@endforeach
 			</ul>
+
+			<hr>
+			<h1>Comments</h1>
+			<ul class="list-group">
+				@foreach ($artist->comments as $comment)
+					<li class="list-group-item">{{$comment->body}}</li>
+				@endforeach
+			</ul>
 			
 			<hr>
 			<h3>Add a New Album</h3>
