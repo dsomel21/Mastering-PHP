@@ -36,3 +36,6 @@ Route::group(['middleware' => ['web']], function() {
 	Route::post('/artists/{artist}/comments', 'CommentController@store');
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
