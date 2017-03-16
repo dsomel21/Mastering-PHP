@@ -27,15 +27,15 @@ trait ValidatesRequests
      */
     public function validateWith($validator, Request $request = null)
     {
-        $request = $request ?: app('request');
+      $request = $request ?: app('request');
 
-        if (is_array($validator)) {
-            $validator = $this->getValidationFactory()->make($request->all(), $validator);
-        }
+      if (is_array($validator)) {
+        $validator = $this->getValidationFactory()->make($request->all(), $validator);
+      }
 
-        if ($validator->fails()) {
-            $this->throwValidationException($request, $validator);
-        }
+      if ($validator->fails()) {
+        $this->throwValidationException($request, $validator);
+      }
     }
 
     /**
@@ -49,11 +49,11 @@ trait ValidatesRequests
      */
     public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
     {
-        $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
+      $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
 
-        if ($validator->fails()) {
-            $this->throwValidationException($request, $validator);
-        }
+      if ($validator->fails()) {
+        $this->throwValidationException($request, $validator);
+      }
     }
 
     /**
@@ -70,9 +70,9 @@ trait ValidatesRequests
      */
     public function validateWithBag($errorBag, Request $request, array $rules, array $messages = [], array $customAttributes = [])
     {
-        $this->withErrorBag($errorBag, function () use ($request, $rules, $messages, $customAttributes) {
-            $this->validate($request, $rules, $messages, $customAttributes);
-        });
+      $this->withErrorBag($errorBag, function () use ($request, $rules, $messages, $customAttributes) {
+        $this->validate($request, $rules, $messages, $customAttributes);
+      });
     }
 
     /**
@@ -84,11 +84,11 @@ trait ValidatesRequests
      */
     protected function withErrorBag($errorBag, callable $callback)
     {
-        $this->validatesRequestErrorBag = $errorBag;
+      $this->validatesRequestErrorBag = $errorBag;
 
-        call_user_func($callback);
+      call_user_func($callback);
 
-        $this->validatesRequestErrorBag = null;
+      $this->validatesRequestErrorBag = null;
     }
 
     /**
@@ -102,8 +102,8 @@ trait ValidatesRequests
      */
     protected function throwValidationException(Request $request, $validator)
     {
-        throw new ValidationException($validator, $this->buildFailedValidationResponse(
-            $request, $this->formatValidationErrors($validator)
+      throw new ValidationException($validator, $this->buildFailedValidationResponse(
+        $request, $this->formatValidationErrors($validator)
         ));
     }
 
@@ -116,13 +116,13 @@ trait ValidatesRequests
      */
     protected function buildFailedValidationResponse(Request $request, array $errors)
     {
-        if ($request->expectsJson()) {
-            return new JsonResponse($errors, 422);
-        }
+      if ($request->expectsJson()) {
+        return new JsonResponse($errors, 422);
+      }
 
-        return redirect()->to($this->getRedirectUrl())
-                        ->withInput($request->input())
-                        ->withErrors($errors, $this->errorBag());
+      return redirect()->to($this->getRedirectUrl())
+      ->withInput($request->input())
+      ->withErrors($errors, $this->errorBag());
     }
 
     /**
@@ -133,7 +133,7 @@ trait ValidatesRequests
      */
     protected function formatValidationErrors(Validator $validator)
     {
-        return $validator->errors()->getMessages();
+      return $validator->errors()->getMessages();
     }
 
     /**
@@ -143,7 +143,7 @@ trait ValidatesRequests
      */
     protected function errorBag()
     {
-        return $this->validatesRequestErrorBag ?: 'default';
+      return $this->validatesRequestErrorBag ?: 'default';
     }
 
     /**
@@ -153,7 +153,7 @@ trait ValidatesRequests
      */
     protected function getRedirectUrl()
     {
-        return app(UrlGenerator::class)->previous();
+      return app(UrlGenerator::class)->previous();
     }
 
     /**
@@ -163,6 +163,6 @@ trait ValidatesRequests
      */
     protected function getValidationFactory()
     {
-        return app(Factory::class);
+      return app(Factory::class);
     }
-}
+  }
